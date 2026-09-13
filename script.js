@@ -4,63 +4,56 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Gallery photo dataset with context and impact stories
+  // Gallery photo dataset with objective action descriptions only
   const galleryData = [
     {
       id: 'apple',
       src: 'assets/images/photo-apple.jpg',
-      alt: 'Clean water washing fresh green apple',
-      title: 'Nourishment & Health',
-      desc: 'Access to safe, running water ensures clean food preparation and protects children from waterborne illnesses.',
-      location: '📍 Tigray Region, Ethiopia'
+      alt: 'Hand washing a green apple under clean running water',
+      title: 'Washing Fresh Fruit',
+      desc: 'A person is holding a green apple with both hands, washing it under a stream of clean running water.'
     },
     {
       id: 'drinking',
       src: 'assets/images/photo-drinking.png',
-      alt: 'Woman drinking clean water cupped in hands from brass tap',
-      title: 'Dignity at the Tap',
-      desc: 'Piped water tap stands bring clean, pure drinking water straight into village communities for the very first time.',
-      location: '📍 Odisha, India'
+      alt: 'Person drinking clean water cupped in hands from a tap',
+      title: 'Drinking Clean Water',
+      desc: 'A person is cupping their hands together under a brass tap to drink clean flowing water.'
     },
     {
       id: 'landscape',
       src: 'assets/images/photo-landscape.jpg',
-      alt: 'Woman carrying yellow jerry can across hillside',
-      title: 'Breaking the Walk for Water',
-      desc: 'Women and children often spend up to 4 hours every day walking just to collect contaminated water.',
-      location: '📍 Amhara, Ethiopia'
+      alt: 'Person carrying a yellow jerry can on back across landscape',
+      title: 'Carrying Water Container',
+      desc: 'A person with a white head covering is walking across an open landscape carrying a yellow jerry can strapped to their back.'
     },
     {
       id: 'trail',
       src: 'assets/images/photo-trail.jpg',
-      alt: 'Two people carrying baskets on misty hill path',
-      title: 'Transforming Remote Villages',
-      desc: 'Clean water initiatives eliminate treacherous daily journeys and allow children to stay in school.',
-      location: '📍 Helambu, Nepal'
+      alt: 'Two people carrying baskets along a dirt path',
+      title: 'Walking on Mountain Trail',
+      desc: 'Two people carrying large woven baskets on their backs are walking along a dirt path through mist and green vegetation.'
     },
     {
       id: 'garden',
       src: 'assets/images/photo-garden.png',
-      alt: 'Smiling woman farmer in lush green vegetable garden',
-      title: 'Empowered Farming & Abundance',
-      desc: 'Community-managed water wells irrigate crops and empower sustainable women-led agricultural cooperatives.',
-      location: '📍 Mwenezi, Zimbabwe'
+      alt: 'Woman harvesting leafy greens in garden',
+      title: 'Harvesting Crops',
+      desc: 'A woman wearing a sun hat and reflective vest is smiling while harvesting leafy green vegetables in a garden.'
     },
     {
       id: 'handwash',
       src: 'assets/images/photo-handwash.jpg',
-      alt: 'Hands washing under water tap into copper basin',
-      title: 'Hygiene & Lifesaving Sanitation',
-      desc: 'Reliable community water points supply clean water for handwashing stations, halting preventable disease.',
-      location: '📍 Sindhupalchok, Nepal'
+      alt: 'Person washing hands under a tap into a basin',
+      title: 'Washing Hands',
+      desc: 'A person wearing a patterned head covering and red bangles is lathering and washing their hands under running water into a basin.'
     },
     {
       id: 'well',
       src: 'assets/images/photo-well.jpg',
-      alt: 'Feet on wooden logs lowering jerry can into well',
-      title: 'The Challenge of Open Wells',
-      desc: 'Unprotected dug wells are dangerous and susceptible to contamination before charity: water drilling teams arrive.',
-      location: '📍 Wamba District, DRC'
+      alt: 'Person standing on logs lowering container into well',
+      title: 'Collecting Water from Well',
+      desc: 'A person is standing on wooden logs over an open well, lowering a yellow container attached to a rope to draw water.'
     }
   ];
 
@@ -77,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCloseInfo = document.getElementById('btnCloseInfo');
   const infoTitle = document.getElementById('infoTitle');
   const infoDesc = document.getElementById('infoDesc');
-  const infoLocation = document.getElementById('infoLocation');
 
   // Modal elements
   const saveModal = document.getElementById('saveModal');
@@ -166,7 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeData = galleryData[activeIndex];
     infoTitle.textContent = activeData.title;
     infoDesc.textContent = activeData.desc;
-    infoLocation.textContent = activeData.location;
   }
 
   function setActiveIndex(newIndex) {
@@ -275,11 +266,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   btnConfirmAction.addEventListener('click', () => {
-    btnConfirmAction.textContent = 'Thank You for Saving Lives!';
+    btnConfirmAction.textContent = 'Thank You for Donating!';
     btnConfirmAction.style.backgroundColor = '#005599';
     setTimeout(() => {
       closeModal();
-      btnConfirmAction.textContent = 'Give Clean Water';
+      btnConfirmAction.textContent = 'Donate Today';
       btnConfirmAction.style.backgroundColor = '';
     }, 1800);
   });

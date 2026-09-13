@@ -8,6 +8,9 @@
      --color-yellow: #FFC72C (Jerry Can Accent)
    ========================================================================== */
 
+/* Proxima Nova (via Typekit CDN) with Nunito as fallback for sans-serif */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
+
 :root {
   --color-navy: #003366;
   --color-slate: #77A8BB;
@@ -15,8 +18,23 @@
   --color-white: #FFFFFF;
   --color-yellow: #FFC72C;
 
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-serif: Georgia, 'Times New Roman', Times, 'Hoefler Text', Garamond, serif;
+  --font-sans: 'proxima-nova', 'Proxima Nova', 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Georgia', 'Times New Roman', Times, serif;
+
+  /* Responsive Card Sizing & Exact 5px Photo Spacing */
+  --card-w: 320px;
+  --card-h: calc(var(--card-w) / 1.6);
+  --card-scale-inactive: 0.816;
+  --inactive-h: calc(var(--card-h) * var(--card-scale-inactive));
+  --photo-gap: 5px; /* Exactly 5px distance between photos */
+
+  /* Precise Center-to-Center Offsets maintaining 5px edge distance */
+  --y-step-1: calc((var(--card-h) + var(--inactive-h)) / 2 + var(--photo-gap));
+  --y-step-2: calc(var(--y-step-1) + var(--inactive-h) + var(--photo-gap));
+
+  /* Staggered Horizontal Offsets */
+  --x-offset-active: -45px;
+  --x-offset-inactive: 46.5px;
 }
 
 /* Reset & Box Sizing */
@@ -57,6 +75,8 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
+  overflow: visible;
 }
 
 /* Brand Logo */
@@ -65,6 +85,8 @@ html, body {
   align-items: center;
   text-decoration: none;
   transition: opacity 0.2s ease;
+  flex-shrink: 0;
+  min-width: 0;
 }
 
 .brand-logo:hover {
@@ -72,9 +94,11 @@ html, body {
 }
 
 .logo-img {
-  height: 38px;
+  height: 32px;
   width: auto;
+  max-width: 220px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 /* Navigation Links */
@@ -251,19 +275,15 @@ html, body {
   filter: drop-shadow(0 3px 6px rgba(0, 51, 102, 0.18));
 }
 
-/* Hero Save Button with Signature White Halo Glow */
+/* Hero Donate Today Button — no glow */
 .btn-save-hero {
-  box-shadow: 
-    0 0 28px 8px rgba(255, 255, 255, 0.72),
-    0 4px 14px rgba(0, 51, 102, 0.15);
+  box-shadow: 0 3px 12px rgba(0, 51, 102, 0.16);
   padding: 6px 7px 6px 20px;
 }
 
 .btn-save-hero:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 
-    0 0 36px 12px rgba(255, 255, 255, 0.88),
-    0 6px 20px rgba(0, 51, 102, 0.25);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(0, 51, 102, 0.22);
 }
 
 .btn-save-hero:active {
@@ -285,7 +305,7 @@ html, body {
 /* Left Navigation Arrow Buttons (anchored beside active card) */
 .gallery-controls-left {
   position: absolute;
-  left: calc(50% - 252px);
+  left: calc(50% + var(--x-offset-active) - (var(--card-w) / 2) - 48px);
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -323,7 +343,7 @@ html, body {
 /* Right Info Button (anchored beside active card) */
 .gallery-controls-right {
   position: absolute;
-  left: calc(50% + 138px);
+  left: calc(50% + var(--x-offset-active) + (var(--card-w) / 2) + 14px);
   top: 50%;
   transform: translateY(-50%);
   z-index: 25;
@@ -351,12 +371,16 @@ html, body {
   transform: scale(0.95);
 }
 
-/* Gallery Viewport & Track */
+/* Gallery Viewport & Track
+   overflow: hidden clips cards that slide out of the visible area.
+   The top edge clips the far-prev card so no sliver peeks above. */
 .gallery-viewport {
   width: 100%;
   height: 560px;
   position: relative;
   overflow: hidden;
+  /* Clip at the very top edge — eliminates sliver above active photo */
+  clip-path: inset(0);
 }
 
 .gallery-track {
@@ -370,7 +394,7 @@ html, body {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 330px;
+  width: var(--card-w);
   aspect-ratio: 1.6 / 1;
   border: 2px solid var(--color-navy);
   background-color: var(--color-navy);
@@ -398,45 +422,43 @@ html, body {
   transform: scale(1.03);
 }
 
-/* Staggered Vertical Card Slot Classes matching user's design:
-   - Center active card: Shifted LEFT by 45px, Scale 1.0
-   - Inactive cards: Shifted RIGHT by 46.5px (total 91.5px delta), Scale 0.816
-   - Vertical step: 185px
-*/
+/* All cards always carry the border — border is on .photo-card base class */
 
 .photo-card.slot-active {
-  transform: translate(-50%, -50%) translate(-45px, 0) scale(1);
+  transform: translate(-50%, -50%) translate(var(--x-offset-active), 0) scale(1);
   z-index: 10;
   opacity: 1;
   box-shadow: 0 10px 28px rgba(0, 51, 102, 0.28);
 }
 
 .photo-card.slot-prev {
-  transform: translate(-50%, -50%) translate(46.5px, -185px) scale(0.816);
+  transform: translate(-50%, -50%) translate(var(--x-offset-inactive), calc(-1 * var(--y-step-1))) scale(var(--card-scale-inactive));
   z-index: 6;
-  opacity: 0.96;
+  opacity: 1;
 }
 
 .photo-card.slot-next {
-  transform: translate(-50%, -50%) translate(46.5px, 185px) scale(0.816);
+  transform: translate(-50%, -50%) translate(var(--x-offset-inactive), var(--y-step-1)) scale(var(--card-scale-inactive));
   z-index: 6;
-  opacity: 0.96;
+  opacity: 1;
 }
 
+/* far-prev is pushed fully above the viewport top edge — opacity 0, no peeking */
 .photo-card.slot-far-prev {
-  transform: translate(-50%, -50%) translate(46.5px, -365px) scale(0.816);
+  transform: translate(-50%, -50%) translate(var(--x-offset-inactive), calc(-1 * var(--y-step-2) - 60px)) scale(var(--card-scale-inactive));
   z-index: 3;
-  opacity: 0.85;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .photo-card.slot-far-next {
-  transform: translate(-50%, -50%) translate(46.5px, 365px) scale(0.816);
+  transform: translate(-50%, -50%) translate(var(--x-offset-inactive), var(--y-step-2)) scale(var(--card-scale-inactive));
   z-index: 3;
-  opacity: 0.85;
+  opacity: 0.7;
 }
 
 .photo-card.slot-hidden {
-  transform: translate(-50%, -50%) translate(46.5px, 500px) scale(0.65);
+  transform: translate(-50%, -50%) translate(var(--x-offset-inactive), calc(var(--y-step-2) + 120px)) scale(0.65);
   z-index: 1;
   opacity: 0;
   pointer-events: none;
@@ -449,7 +471,7 @@ html, body {
 .photo-info-popover {
   position: absolute;
   top: 50%;
-  left: calc(50% + 180px);
+  left: calc(50% + var(--x-offset-active) + (var(--card-w) / 2) + 54px);
   transform: translateY(-50%) scale(0.95);
   width: 280px;
   background-color: var(--color-white);
@@ -515,13 +537,6 @@ html, body {
   font-family: var(--font-serif);
   font-size: 13.5px;
   line-height: 1.5;
-  margin-bottom: 12px;
-}
-
-.popover-meta {
-  font-size: 12px;
-  color: var(--color-navy);
-  font-weight: 500;
 }
 
 /* ==========================================================================
@@ -619,37 +634,134 @@ html, body {
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   Responsive Breakpoints & Window Adaptations
    ========================================================================== */
 
-@media (max-width: 1024px) {
-  .hero-wrapper {
-    grid-template-columns: 1fr;
-    gap: 40px;
+/* Large Tablets & Small Desktops */
+@media (max-width: 1140px) {
+  :root {
+    --card-w: 260px;
+    --x-offset-active: -32px;
+    --x-offset-inactive: 34px;
   }
 
-  .hero-section {
-    min-height: auto;
-    padding: 40px 0;
-  }
-
-  .hero-gallery-stage {
-    height: 480px;
-  }
-
-  .gallery-viewport {
-    height: 480px;
-  }
-}
-
-@media (max-width: 768px) {
   .nav-container {
     padding: 0 20px;
-    height: 72px;
+    gap: 12px;
+  }
+
+  /* Logo scales down but never disappears */
+  .logo-img {
+    height: 28px;
+    max-width: 180px;
   }
 
   .nav-links {
-    display: none; /* Collapsed for clean mobile view */
+    gap: 14px;
+  }
+
+  .nav-item {
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+  }
+
+  .btn-pill .btn-label {
+    font-size: 13.5px;
+  }
+
+  .hero-wrapper {
+    padding: 0 20px;
+    gap: 16px;
+  }
+
+  .hero-gallery-stage {
+    height: 510px;
+  }
+
+  .gallery-viewport {
+    height: 510px;
+  }
+}
+
+/* Tablets & Medium Screens — collapse to single column */
+@media (max-width: 960px) {
+  .hero-section {
+    min-height: auto;
+    padding: 36px 0 48px;
+  }
+
+  .hero-wrapper {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px 0;
+  }
+
+  :root {
+    --card-w: clamp(240px, 44vw, 290px);
+    --x-offset-active: -28px;
+    --x-offset-inactive: 30px;
+  }
+
+  .hero-gallery-stage {
+    width: 100%;
+    max-width: 580px;
+    height: 490px;
+    margin: 0 auto;
+  }
+
+  .gallery-viewport {
+    height: 490px;
+  }
+}
+
+/* Mobile Devices & Small Windows */
+@media (max-width: 768px) {
+  .navbar {
+    height: auto;
+  }
+
+  .nav-container {
+    padding: 0 14px;
+    height: 64px;
+    gap: 10px;
+  }
+
+  /* Logo shrinks but stays readable */
+  .logo-img {
+    height: 26px;
+    max-width: 160px;
+  }
+
+  .nav-links {
+    display: none; /* Keep header clean on mobile */
+  }
+
+  .btn-pill {
+    padding: 5px 5px 5px 12px;
+    gap: 6px;
+  }
+
+  .btn-pill .btn-label {
+    font-size: 12px;
+  }
+
+  .btn-pill .icon-circle {
+    width: 26px;
+    height: 26px;
+  }
+
+  .btn-pill .community-svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hero-section {
+    padding: 24px 0 40px;
   }
 
   .hero-wrapper {
@@ -657,34 +769,114 @@ html, body {
   }
 
   .hero-headline {
-    font-size: 30px;
+    font-size: clamp(26px, 6.5vw, 34px);
+    margin-bottom: 18px;
   }
 
   .hero-subheadline {
-    font-size: 16.5px;
+    font-size: clamp(15px, 3.8vw, 18px);
+    margin-bottom: 22px;
   }
 
+  .hero-footnote {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .hero-actions-group {
+    gap: 14px;
+  }
+
+  .hex-heart-icon {
+    width: 46px;
+    height: 52px;
+  }
+
+  :root {
+    --card-w: clamp(200px, 62vw, 252px);
+    --x-offset-active: -16px;
+    --x-offset-inactive: 18px;
+    --photo-gap: 5px;
+  }
+
+  .hero-gallery-stage {
+    height: 420px;
+  }
+
+  .gallery-viewport {
+    height: 420px;
+  }
+
+  /* Ensure border always shows at smaller sizes */
   .photo-card {
-    width: 260px;
-  }
-
-  .photo-card.slot-active {
-    transform: translate(-50%, -50%) translate(-20px, 0) scale(1);
-  }
-
-  .photo-card.slot-prev {
-    transform: translate(-50%, -50%) translate(30px, -120px) scale(0.82);
-  }
-
-  .photo-card.slot-next {
-    transform: translate(-50%, -50%) translate(30px, 120px) scale(0.82);
+    border: 2px solid var(--color-navy);
   }
 
   .gallery-controls-left {
-    left: 4px;
+    left: 6px;
   }
 
   .gallery-controls-right {
-    right: 4px;
+    left: auto;
+    right: 6px;
+  }
+
+  .gallery-nav-btn svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .gallery-info-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .photo-info-popover {
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%) scale(0.95);
+    width: min(300px, calc(100vw - 32px));
+    padding: 14px;
+  }
+
+  .photo-info-popover.active {
+    transform: translate(-50%, -50%) scale(1);
   }
 }
+
+/* Very Small Mobile (<420px) */
+@media (max-width: 420px) {
+  :root {
+    --card-w: 190px;
+    --x-offset-active: -10px;
+    --x-offset-inactive: 12px;
+    --photo-gap: 5px;
+  }
+
+  .logo-img {
+    height: 22px;
+    max-width: 140px;
+  }
+
+  .hero-headline {
+    font-size: 24px;
+  }
+
+  .hero-subheadline {
+    font-size: 14px;
+  }
+
+  .hero-gallery-stage {
+    height: 360px;
+  }
+
+  .gallery-viewport {
+    height: 360px;
+  }
+
+  /* Border always visible even on tiny screens */
+  .photo-card {
+    border: 2px solid var(--color-navy);
+  }
+}
+

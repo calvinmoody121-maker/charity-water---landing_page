@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>charity: water — Contribute to saving lives daily</title>
+  <!-- Proxima Nova via Adobe Fonts (Typekit) -->
+  <link rel="stylesheet" href="https://use.typekit.net/xbp5obo.css">
+  <!-- Nunito as web fallback if Proxima Nova is unavailable -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -25,7 +31,7 @@
 
       <div class="nav-cta">
         <button class="btn-pill btn-save-nav" id="navSaveBtn">
-          <span class="btn-label">SAVE</span>
+          <span class="btn-label">DONATE TODAY</span>
           <span class="icon-circle" aria-hidden="true">
             <svg viewBox="0 0 32 32" class="community-svg" width="18" height="18">
               <!-- Center Person -->
@@ -73,7 +79,7 @@
           </div>
 
           <button class="btn-pill btn-save-hero" id="heroSaveBtn">
-            <span class="btn-label">SAVE</span>
+            <span class="btn-label">DONATE TODAY</span>
             <span class="icon-circle" aria-hidden="true">
               <svg viewBox="0 0 32 32" class="community-svg" width="18" height="18">
                 <!-- Center Person -->
@@ -132,14 +138,11 @@
         <!-- Photo Story Info Popover/Card -->
         <div class="photo-info-popover" id="photoInfoPopover" role="dialog" aria-hidden="true">
           <div class="popover-header">
-            <span class="popover-tag" id="infoTag">Project Story</span>
+            <span class="popover-tag" id="infoTag">Photo Description</span>
             <button class="popover-close" id="btnCloseInfo" aria-label="Close info">&times;</button>
           </div>
-          <h3 class="popover-title" id="infoTitle">Clean Water Changes Everything</h3>
-          <p class="popover-desc" id="infoDesc">Fresh, safe water brings health, education, and lasting dignity to entire communities.</p>
-          <div class="popover-meta">
-            <span class="meta-item" id="infoLocation">📍 Community Water Project</span>
-          </div>
+          <h3 class="popover-title" id="infoTitle">Washing Fresh Apple</h3>
+          <p class="popover-desc" id="infoDesc">Hand washing a green apple under clean running water from a tap.</p>
         </div>
 
       </section>
@@ -147,17 +150,17 @@
     </div>
   </main>
 
-  <!-- Interactive Modal for SAVE Action -->
+  <!-- Interactive Modal for Donate Action -->
   <div class="modal-overlay" id="saveModal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-content">
       <button class="modal-close" id="btnModalClose" aria-label="Close modal">&times;</button>
       <div class="modal-icon">
         <img src="assets/icons/icon-hex-heart-clean.png" alt="Giving" width="60">
       </div>
-      <h2 class="modal-title">Join the Mission</h2>
+      <h2 class="modal-title">Donate Today</h2>
       <p class="modal-text">100% of public donations directly fund clean water projects in developing communities around the world.</p>
       <div class="modal-actions">
-        <button class="btn-pill btn-modal-primary" id="btnConfirmAction">Give Clean Water</button>
+        <button class="btn-pill btn-modal-primary" id="btnConfirmAction">Donate Today</button>
       </div>
     </div>
   </div>
