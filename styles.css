@@ -326,8 +326,8 @@ html, body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin: 8px auto 0;
-  padding: 12px 24px 6px;
+  margin: 16px auto 0;
+  padding: 18px 24px 8px;
   max-width: 920px;
   color: var(--color-navy);
   font-size: clamp(10px, 1.05vw, 12.5px);
@@ -335,6 +335,7 @@ html, body {
   letter-spacing: 0.12em;
   text-align: center;
   text-transform: uppercase;
+  z-index: 2;
 }
 
 .tagline-droplet {
@@ -466,8 +467,8 @@ html, body {
   height: 560px;
   position: relative;
   overflow: hidden;
-  /* Clip at the very top edge — eliminates sliver above active photo */
   clip-path: inset(0);
+  isolation: isolate;
 }
 
 .gallery-track {
@@ -530,22 +531,23 @@ html, body {
   opacity: 1;
 }
 
-/* far-prev is pushed fully above the viewport top edge — opacity 0, no peeking */
+/* far-prev / far-next sit fully outside the viewport so no photo sliver peeks */
 .photo-card.slot-far-prev {
-  transform: translate(-50%, -50%) translate(var(--x-offset-inactive), calc(-1 * var(--y-step-2) - 60px)) scale(var(--card-scale-inactive));
+  transform: translate(-50%, -50%) translate(var(--x-offset-inactive), calc(-1 * var(--y-step-2) - 80px)) scale(var(--card-scale-inactive));
   z-index: 3;
   opacity: 0;
   pointer-events: none;
 }
 
 .photo-card.slot-far-next {
-  transform: translate(-50%, -50%) translate(var(--x-offset-inactive), var(--y-step-2)) scale(var(--card-scale-inactive));
+  transform: translate(-50%, -50%) translate(var(--x-offset-inactive), calc(var(--y-step-2) + 80px)) scale(var(--card-scale-inactive));
   z-index: 3;
-  opacity: 0.7;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .photo-card.slot-hidden {
-  transform: translate(-50%, -50%) translate(var(--x-offset-inactive), calc(var(--y-step-2) + 120px)) scale(0.65);
+  transform: translate(-50%, -50%) translate(var(--x-offset-inactive), calc(var(--y-step-2) + 160px)) scale(0.65);
   z-index: 1;
   opacity: 0;
   pointer-events: none;
