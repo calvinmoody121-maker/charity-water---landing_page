@@ -190,11 +190,12 @@ html, body {
   min-height: calc(100vh - 84.5px);
   background-color: var(--color-slate);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding: 24px 0;
+  padding: 24px 0 36px;
 }
 
 .hero-wrapper {
@@ -227,7 +228,7 @@ html, body {
   font-weight: 400;
   line-height: 1.22;
   letter-spacing: -0.01em;
-  margin-bottom: 28px;
+  margin-bottom: 52px;
 }
 
 .hero-subheadline {
@@ -236,7 +237,7 @@ html, body {
   font-size: clamp(17px, 1.8vw, 21px);
   font-weight: 400;
   line-height: 1.48;
-  margin-bottom: 34px;
+  margin-bottom: 56px;
 }
 
 .hero-footnote {
@@ -254,6 +255,92 @@ html, body {
   align-items: center;
   justify-content: center;
   gap: 24px;
+  margin-top: 10px;
+}
+
+/* Decorative water graphics */
+.water-graphics {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.water-ripple {
+  position: absolute;
+}
+
+.water-ripple--left {
+  width: min(520px, 48vw);
+  height: auto;
+  left: -6%;
+  top: 8%;
+}
+
+.water-droplet {
+  position: absolute;
+}
+
+.water-droplet--tl {
+  width: 22px;
+  left: 4.5%;
+  top: 12%;
+}
+
+.water-droplet--tl2 {
+  width: 14px;
+  left: 7.5%;
+  top: 22%;
+}
+
+.water-droplet--mid {
+  width: 16px;
+  left: 18%;
+  bottom: 28%;
+}
+
+.water-droplet--br {
+  width: 20px;
+  right: 5%;
+  bottom: 18%;
+}
+
+.water-wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 88px;
+}
+
+.hero-wrapper,
+.page-tagline {
+  position: relative;
+  z-index: 1;
+}
+
+.page-tagline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 8px auto 0;
+  padding: 12px 24px 6px;
+  max-width: 920px;
+  color: var(--color-navy);
+  font-size: clamp(10px, 1.05vw, 12.5px);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.tagline-droplet {
+  width: 14px;
+  height: auto;
+  flex-shrink: 0;
 }
 
 .icon-hex-wrapper {
@@ -770,17 +857,23 @@ html, body {
 
   .hero-headline {
     font-size: clamp(26px, 6.5vw, 34px);
-    margin-bottom: 18px;
+    margin-bottom: 32px;
   }
 
   .hero-subheadline {
     font-size: clamp(15px, 3.8vw, 18px);
-    margin-bottom: 22px;
+    margin-bottom: 36px;
   }
 
   .hero-footnote {
     font-size: 13px;
     margin-bottom: 20px;
+  }
+
+  .page-tagline {
+    letter-spacing: 0.06em;
+    padding: 16px 16px 0;
+    line-height: 1.45;
   }
 
   .hero-actions-group {
