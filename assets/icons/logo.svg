@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 40" width="240" height="40" fill="none">
+  <!-- Jerry Can Graphic -->
+  <g transform="translate(4, 2)">
+    <!-- Can Body -->
+    <rect x="0" y="7" width="24" height="29" rx="3.5" fill="#FFC72C" />
+    <!-- Spout / Cap -->
+    <rect x="2" y="2" width="4.5" height="6" rx="1" fill="#FFC72C" />
+    <!-- Handle -->
+    <path d="M7 3.5 C7 2.2, 8 1.5, 9.5 1.5 L19.5 1.5 C21 1.5, 22 2.2, 22 3.5 L22 8 L7 8 Z" fill="#FFC72C" />
+    <!-- Handle Cutout -->
+    <rect x="9.5" y="4" width="10" height="3" rx="1" fill="#FFFFFF" />
+    <!-- Jerry Can Rib Cross Indentation -->
+    <path d="M4 12 L20 28 M20 12 L4 28" stroke="#E6A800" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <!-- Wordmark -->
+  <text x="40" y="26" font-family="'Times New Roman', Times, 'Hoefler Text', Georgia, serif" font-size="20" letter-spacing="3.5" fill="#000000" font-weight="400">charity: water</text>
+</svg>

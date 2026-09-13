@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 115" width="100" height="115" fill="none">
+  <!-- Outer Rounded Hexagon -->
+  <path d="M 50,4 
+           L 93,28.8 
+           A 6,6 0 0 1 96,34 
+           L 96,81 
+           A 6,6 0 0 1 93,86.2 
+           L 50,111 
+           A 6,6 0 0 1 47,111 
+           L 4,86.2 
+           A 6,6 0 0 1 1,81 
+           L 1,34 
+           A 6,6 0 0 1 4,28.8 
+           L 47,4 
+           A 6,6 0 0 1 50,4 Z" 
+        stroke="#003366" stroke-width="6.5" stroke-linejoin="round" fill="none" />
+  <!-- Cupped Hand -->
+  <path d="M 19,75 
+           C 25,72 34,71 47,71 
+           C 53,71 59,74 59,78 
+           C 59,82 52,83 45,83 
+           L 37,83 
+           M 45,83 
+           C 55,83 67,77 75,70 
+           C 79,66 77,61 72,63 
+           C 66,66 57,71 49,71" 
+        stroke="#003366" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  <!-- Heart resting above the hand -->
+  <path d="M 48.5,63 
+           C 48.5,63 32,52 32,38 
+           C 32,29 39,23 48.5,31 
+           C 58,23 65,29 65,38 
+           C 65,52 48.5,63 48.5,63 Z" 
+        stroke="#003366" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+</svg>

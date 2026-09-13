@@ -15,3 +15,7 @@ Summary of instructor feedback on the first landing page project.
 - **Photo choice:** The image is selected, but the write-up should explain how it connects to the brand’s focus on hope, dignity, and possibility.
 - **Messaging:** Speak more directly to college students and what motivates them to give, so the copy matches the audience strategy.
 - **CTA:** “Save” is unclear as the main action. Use something like “Donate Now” or “Give Today.”
+
+So, for the general idea of the website, I am going to copy the landing page that I have created on the google slides. 
+
+Since, I have told the AI Agent what kind of specific things I want, I have to analyze if the AI Agent did a good job

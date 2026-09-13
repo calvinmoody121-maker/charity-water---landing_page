@@ -1,0 +1,690 @@
+/* ==========================================================================
+   charity: water Landing Page Styles
+   Brand Palette:
+     --color-navy:   #003366 (Primary Deep Navy)
+     --color-slate:  #77A8BB (Hero Slate Blue Background)
+     --color-black:  #000000 (Base / Typography)
+     --color-white:  #FFFFFF (Surfaces & Accents)
+     --color-yellow: #FFC72C (Jerry Can Accent)
+   ========================================================================== */
+
+:root {
+  --color-navy: #003366;
+  --color-slate: #77A8BB;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-yellow: #FFC72C;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', Times, 'Hoefler Text', Garamond, serif;
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--color-slate);
+  color: var(--color-navy);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Top Navigation Bar
+   ========================================================================== */
+
+.navbar {
+  width: 100%;
+  background-color: var(--color-white);
+  border-bottom: 2.5px solid var(--color-navy);
+  position: relative;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1280px;
+  height: 82px;
+  margin: 0 auto;
+  padding: 0 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand Logo */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.brand-logo:hover {
+  opacity: 0.85;
+}
+
+.logo-img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-item {
+  color: var(--color-navy);
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.2s ease, transform 0.2s ease;
+  padding: 4px 0;
+}
+
+.nav-item:hover {
+  color: #002244;
+  transform: translateY(-1px);
+}
+
+.nav-divider {
+  display: inline-block;
+  width: 1.5px;
+  height: 32px;
+  background-color: var(--color-navy);
+  opacity: 0.75;
+}
+
+/* Pill Action Button */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--color-white);
+  border: none;
+  outline: none;
+  border-radius: 9999px;
+  padding: 5px 6px 5px 18px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.btn-pill .btn-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-navy);
+  letter-spacing: 0.06em;
+}
+
+.btn-pill .icon-circle {
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-navy);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.btn-save-nav {
+  box-shadow: 0 3px 12px rgba(0, 51, 102, 0.16);
+}
+
+.btn-save-nav:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 51, 102, 0.22);
+}
+
+.btn-save-nav:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Hero Section Layout
+   ========================================================================== */
+
+.hero-section {
+  width: 100%;
+  min-height: calc(100vh - 84.5px);
+  background-color: var(--color-slate);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 24px 0;
+}
+
+.hero-wrapper {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ==========================================================================
+   Left Column: Copy & CTAs
+   ========================================================================== */
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.hero-headline {
+  color: var(--color-navy);
+  font-family: var(--font-sans);
+  font-size: clamp(34px, 3.8vw, 48px);
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+}
+
+.hero-subheadline {
+  color: var(--color-navy);
+  font-family: var(--font-serif);
+  font-size: clamp(17px, 1.8vw, 21px);
+  font-weight: 400;
+  line-height: 1.48;
+  margin-bottom: 34px;
+}
+
+.hero-footnote {
+  color: var(--color-navy);
+  font-family: var(--font-serif);
+  font-size: clamp(12.5px, 1.25vw, 14.5px);
+  font-weight: 400;
+  line-height: 1.45;
+  margin-bottom: 28px;
+  opacity: 0.95;
+}
+
+.hero-actions-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.icon-hex-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.icon-hex-wrapper:hover {
+  transform: scale(1.08);
+}
+
+.hex-heart-icon {
+  width: 58px;
+  height: 64px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(0, 51, 102, 0.18));
+}
+
+/* Hero Save Button with Signature White Halo Glow */
+.btn-save-hero {
+  box-shadow: 
+    0 0 28px 8px rgba(255, 255, 255, 0.72),
+    0 4px 14px rgba(0, 51, 102, 0.15);
+  padding: 6px 7px 6px 20px;
+}
+
+.btn-save-hero:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    0 0 36px 12px rgba(255, 255, 255, 0.88),
+    0 6px 20px rgba(0, 51, 102, 0.25);
+}
+
+.btn-save-hero:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ==========================================================================
+   Right Column: Vertical Rotating Photo Gallery
+   ========================================================================== */
+
+.hero-gallery-stage {
+  position: relative;
+  height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Left Navigation Arrow Buttons (anchored beside active card) */
+.gallery-controls-left {
+  position: absolute;
+  left: calc(50% - 252px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 25;
+}
+
+.gallery-nav-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), filter 0.2s ease;
+}
+
+.gallery-nav-btn:hover {
+  transform: scale(1.12);
+  filter: drop-shadow(0 4px 10px rgba(0, 51, 102, 0.35));
+}
+
+.gallery-nav-btn:active {
+  transform: scale(0.94);
+}
+
+.arrow-svg {
+  display: block;
+}
+
+/* Right Info Button (anchored beside active card) */
+.gallery-controls-right {
+  position: absolute;
+  left: calc(50% + 138px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 25;
+}
+
+.gallery-info-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), filter 0.2s ease;
+}
+
+.gallery-info-btn:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 3px 8px rgba(0, 51, 102, 0.3));
+}
+
+.gallery-info-btn:active {
+  transform: scale(0.95);
+}
+
+/* Gallery Viewport & Track */
+.gallery-viewport {
+  width: 100%;
+  height: 560px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Photo Card Elements */
+.photo-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 330px;
+  aspect-ratio: 1.6 / 1;
+  border: 2px solid var(--color-navy);
+  background-color: var(--color-navy);
+  box-shadow: 0 8px 24px rgba(0, 51, 102, 0.2);
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 2px;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), 
+              opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  transition: transform 0.6s ease;
+}
+
+.photo-card:hover img {
+  transform: scale(1.03);
+}
+
+/* Staggered Vertical Card Slot Classes matching user's design:
+   - Center active card: Shifted LEFT by 45px, Scale 1.0
+   - Inactive cards: Shifted RIGHT by 46.5px (total 91.5px delta), Scale 0.816
+   - Vertical step: 185px
+*/
+
+.photo-card.slot-active {
+  transform: translate(-50%, -50%) translate(-45px, 0) scale(1);
+  z-index: 10;
+  opacity: 1;
+  box-shadow: 0 10px 28px rgba(0, 51, 102, 0.28);
+}
+
+.photo-card.slot-prev {
+  transform: translate(-50%, -50%) translate(46.5px, -185px) scale(0.816);
+  z-index: 6;
+  opacity: 0.96;
+}
+
+.photo-card.slot-next {
+  transform: translate(-50%, -50%) translate(46.5px, 185px) scale(0.816);
+  z-index: 6;
+  opacity: 0.96;
+}
+
+.photo-card.slot-far-prev {
+  transform: translate(-50%, -50%) translate(46.5px, -365px) scale(0.816);
+  z-index: 3;
+  opacity: 0.85;
+}
+
+.photo-card.slot-far-next {
+  transform: translate(-50%, -50%) translate(46.5px, 365px) scale(0.816);
+  z-index: 3;
+  opacity: 0.85;
+}
+
+.photo-card.slot-hidden {
+  transform: translate(-50%, -50%) translate(46.5px, 500px) scale(0.65);
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Photo Story Info Popover
+   ========================================================================== */
+
+.photo-info-popover {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 180px);
+  transform: translateY(-50%) scale(0.95);
+  width: 280px;
+  background-color: var(--color-white);
+  border: 1.5px solid var(--color-navy);
+  border-radius: 8px;
+  padding: 18px 20px;
+  box-shadow: 0 14px 34px rgba(0, 51, 102, 0.25);
+  z-index: 30;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-info-popover.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-50%) scale(1);
+}
+
+.popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.popover-tag {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.popover-close {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--color-navy);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.popover-close:hover {
+  opacity: 1;
+}
+
+.popover-title {
+  color: var(--color-navy);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.popover-desc {
+  color: #333333;
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.popover-meta {
+  font-size: 12px;
+  color: var(--color-navy);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   SAVE Modal Dialog
+   ========================================================================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background-color: var(--color-white);
+  border-radius: 12px;
+  max-width: 440px;
+  width: 90%;
+  padding: 36px 30px;
+  text-align: center;
+  position: relative;
+  border-top: 5px solid var(--color-navy);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.active .modal-content {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  color: #777777;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: var(--color-black);
+}
+
+.modal-icon {
+  margin-bottom: 18px;
+}
+
+.modal-title {
+  color: var(--color-navy);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.modal-text {
+  color: #333333;
+  font-family: var(--font-serif);
+  font-size: 15.5px;
+  line-height: 1.55;
+  margin-bottom: 26px;
+}
+
+.btn-modal-primary {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  border: none;
+  font-size: 15.5px;
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-modal-primary:hover {
+  background-color: #002244;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .hero-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding: 40px 0;
+  }
+
+  .hero-gallery-stage {
+    height: 480px;
+  }
+
+  .gallery-viewport {
+    height: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 20px;
+    height: 72px;
+  }
+
+  .nav-links {
+    display: none; /* Collapsed for clean mobile view */
+  }
+
+  .hero-wrapper {
+    padding: 0 16px;
+  }
+
+  .hero-headline {
+    font-size: 30px;
+  }
+
+  .hero-subheadline {
+    font-size: 16.5px;
+  }
+
+  .photo-card {
+    width: 260px;
+  }
+
+  .photo-card.slot-active {
+    transform: translate(-50%, -50%) translate(-20px, 0) scale(1);
+  }
+
+  .photo-card.slot-prev {
+    transform: translate(-50%, -50%) translate(30px, -120px) scale(0.82);
+  }
+
+  .photo-card.slot-next {
+    transform: translate(-50%, -50%) translate(30px, 120px) scale(0.82);
+  }
+
+  .gallery-controls-left {
+    left: 4px;
+  }
+
+  .gallery-controls-right {
+    right: 4px;
+  }
+}
