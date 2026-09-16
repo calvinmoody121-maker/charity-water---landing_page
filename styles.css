@@ -62,16 +62,16 @@ html, body {
 .navbar {
   width: 100%;
   background-color: var(--color-white);
-  border-bottom: 2.5px solid var(--color-navy);
+  border-bottom: 2px solid var(--color-navy);
   position: relative;
   z-index: 100;
 }
 
 .nav-container {
-  max-width: 1280px;
+  width: 100%;
   height: 82px;
-  margin: 0 auto;
-  padding: 0 36px;
+  margin: 0;
+  padding: 0 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -187,26 +187,28 @@ html, body {
 
 .hero-section {
   width: 100%;
-  min-height: calc(100vh - 84.5px);
+  min-height: calc(100vh - 82px);
   background-color: var(--color-slate);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: stretch;
   position: relative;
   overflow: hidden;
-  padding: 24px 0 36px;
+  padding: 0;
 }
 
 .hero-wrapper {
-  max-width: 1280px;
+  max-width: none;
   width: 100%;
-  margin: 0 auto;
-  padding: 0 40px;
+  margin: 0;
+  padding: 0 48px 0 72px;
+  flex: 1;
   display: grid;
   grid-template-columns: 1fr 1.15fr;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
+  min-height: calc(100vh - 82px);
 }
 
 /* ==========================================================================
@@ -229,6 +231,7 @@ html, body {
   line-height: 1.22;
   letter-spacing: -0.01em;
   margin-bottom: 52px;
+  min-height: 2.5em;
 }
 
 .hero-subheadline {
@@ -238,6 +241,7 @@ html, body {
   font-weight: 400;
   line-height: 1.48;
   margin-bottom: 56px;
+  min-height: 5.8em;
 }
 
 .hero-footnote {
@@ -248,6 +252,7 @@ html, body {
   line-height: 1.45;
   margin-bottom: 28px;
   opacity: 0.95;
+  min-height: 2.9em;
 }
 
 .hero-actions-group {
@@ -267,6 +272,17 @@ html, body {
   overflow: hidden;
 }
 
+.water-caustics {
+  position: absolute;
+  inset: -8%;
+  background:
+    radial-gradient(ellipse 42% 28% at 18% 22%, rgba(255, 255, 255, 0.16) 0%, transparent 62%),
+    radial-gradient(ellipse 36% 24% at 82% 18%, rgba(255, 255, 255, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 48% 32% at 70% 78%, rgba(0, 51, 102, 0.1) 0%, transparent 68%),
+    radial-gradient(ellipse 30% 22% at 12% 72%, rgba(255, 255, 255, 0.1) 0%, transparent 64%);
+  animation: waterShimmer 14s ease-in-out infinite alternate;
+}
+
 .water-ripple {
   position: absolute;
 }
@@ -276,6 +292,58 @@ html, body {
   height: auto;
   left: -6%;
   top: 8%;
+  animation: ripplePulse 11s ease-in-out infinite;
+}
+
+.water-ripple--right {
+  width: min(460px, 42vw);
+  height: auto;
+  right: -8%;
+  top: 18%;
+  animation: ripplePulse 13s ease-in-out infinite 1.6s;
+}
+
+.water-ripple--bottom {
+  width: min(280px, 32vw);
+  height: auto;
+  left: 38%;
+  bottom: 6%;
+  animation: ripplePulse 10s ease-in-out infinite 0.8s;
+}
+
+.water-stream {
+  position: absolute;
+}
+
+.water-stream--left {
+  width: 54px;
+  height: 180px;
+  left: 11%;
+  top: 6%;
+  opacity: 0.9;
+}
+
+.water-stream--right {
+  width: 48px;
+  height: 170px;
+  right: 8%;
+  top: 10%;
+}
+
+.water-splash {
+  position: absolute;
+}
+
+.water-splash--tr {
+  width: 110px;
+  right: 16%;
+  top: 8%;
+}
+
+.water-splash--bl {
+  width: 120px;
+  left: 6%;
+  bottom: 16%;
 }
 
 .water-droplet {
@@ -286,25 +354,73 @@ html, body {
   width: 22px;
   left: 4.5%;
   top: 12%;
+  animation: dropletDrift 7s ease-in-out infinite;
 }
 
 .water-droplet--tl2 {
   width: 14px;
   left: 7.5%;
   top: 22%;
+  animation: dropletDrift 8.5s ease-in-out infinite 0.6s;
 }
 
 .water-droplet--mid {
   width: 16px;
   left: 18%;
   bottom: 28%;
+  animation: dropletDrift 9s ease-in-out infinite 1.2s;
 }
 
 .water-droplet--br {
   width: 20px;
   right: 5%;
   bottom: 18%;
+  animation: dropletDrift 7.5s ease-in-out infinite 0.4s;
 }
+
+.water-droplet--tr {
+  width: 18px;
+  right: 11%;
+  top: 16%;
+  animation: dropletDrift 8s ease-in-out infinite 1s;
+}
+
+.water-droplet--tr2 {
+  width: 11px;
+  right: 18%;
+  top: 28%;
+  animation: dropletDrift 6.8s ease-in-out infinite 1.8s;
+}
+
+.water-droplet--bl {
+  width: 15px;
+  left: 3%;
+  bottom: 22%;
+  animation: dropletDrift 9.2s ease-in-out infinite 0.9s;
+}
+
+.water-droplet--center {
+  width: 12px;
+  left: 47%;
+  top: 8%;
+  animation: dropletDrift 10s ease-in-out infinite 1.4s;
+}
+
+.water-bubble {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.25px solid rgba(0, 51, 102, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  animation: bubbleRise 12s ease-in-out infinite;
+}
+
+.water-bubble--1 { width: 10px; height: 10px; left: 9%; bottom: 18%; animation-duration: 11s; }
+.water-bubble--2 { width: 16px; height: 16px; left: 22%; bottom: 10%; animation-duration: 14s; animation-delay: 1.2s; }
+.water-bubble--3 { width: 8px; height: 8px; left: 34%; bottom: 24%; animation-duration: 10s; animation-delay: 2s; }
+.water-bubble--4 { width: 13px; height: 13px; right: 14%; bottom: 12%; animation-duration: 13s; animation-delay: 0.6s; }
+.water-bubble--5 { width: 7px; height: 7px; right: 24%; bottom: 30%; animation-duration: 9.5s; animation-delay: 1.8s; }
+.water-bubble--6 { width: 18px; height: 18px; right: 6%; bottom: 36%; animation-duration: 15s; animation-delay: 2.4s; }
+.water-bubble--7 { width: 9px; height: 9px; left: 52%; bottom: 14%; animation-duration: 12.5s; animation-delay: 0.9s; }
 
 .water-wave {
   position: absolute;
@@ -313,6 +429,32 @@ html, body {
   bottom: 0;
   width: 100%;
   height: 88px;
+}
+
+.water-wave--top {
+  top: 0;
+  bottom: auto;
+  height: 56px;
+}
+
+@keyframes waterShimmer {
+  from { transform: translate3d(-1.5%, -1%, 0) scale(1); opacity: 0.85; }
+  to { transform: translate3d(1.5%, 1.2%, 0) scale(1.04); opacity: 1; }
+}
+
+@keyframes ripplePulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.045); opacity: 0.72; }
+}
+
+@keyframes dropletDrift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+@keyframes bubbleRise {
+  0%, 100% { transform: translateY(0); opacity: 0.35; }
+  50% { transform: translateY(-28px); opacity: 0.7; }
 }
 
 .hero-wrapper,
@@ -531,7 +673,6 @@ html, body {
   opacity: 1;
 }
 
-/* far-prev / far-next sit fully outside the viewport so no photo sliver peeks */
 .photo-card.slot-far-prev {
   transform: translate(-50%, -50%) translate(var(--x-offset-inactive), calc(-1 * var(--y-step-2) - 80px)) scale(var(--card-scale-inactive));
   z-index: 3;
